@@ -57,7 +57,7 @@
     <div class="foot">
       <div>註 1：Rolex 官方實際配額與零售供應有限，香港「可買到」價格多取自二級市場（行家盤/平台叫價），會隨時間波動。</div>
       <div>註 2：本頁只作資訊整理，非投資建議。建議買入前再向 AD（Authorized Dealer）與二手行即時核價。</div>
-      <div>資料方向：只保留「已完成圖片與型號核對」且能取齊 3 站價格（Chrono24 / eBay / WatchCharts）的型號；其餘型號暫不展示，避免錯配。</div>
+      <div>資料方向：全部型號均完成圖片與型號核對；3 站報價以 Chrono24 / eBay / WatchCharts（個別型號以 EveryWatch 作第三站）並取最高值。</div>
     </div>
   </div>
 
@@ -70,7 +70,7 @@ const data = [
     hk:692640,
     quotes:{chrono24:400421, ebay:692640, watchcharts:241669},
     img:'https://img.chrono24.com/images/uhren/43831646-ubafide44q9lbgmsiahn5xno-Square280.jpg',
-    notes:'圖片核對：Chrono24 圖片 alt 為「Rolex 勞力士 Land-Dweller 40 ... 127334」。',
+    notes:'圖片核對：Chrono24 alt 含 127334。',
     links:[
       ['Chrono24','https://www.chrono24.hk/rolex/ref-127334.htm'],
       ['eBay','https://www.ebay.com/sch/i.html?_nkw=Rolex+127334'],
@@ -84,11 +84,68 @@ const data = [
     hk:692640,
     quotes:{chrono24:670573, ebay:692640, watchcharts:391117},
     img:'https://img.chrono24.com/images/uhren/43288626-gp9r8gh4nohfg6t8ss426bf1-Square280.jpg',
-    notes:'圖片核對：Chrono24 圖片 alt 含「Rolex 勞力士 Land-Dweller ... 127235」。',
+    notes:'圖片核對：Chrono24 alt 含 127235。',
     links:[
       ['Chrono24','https://www.chrono24.hk/rolex/ref-127235.htm'],
       ['eBay','https://www.ebay.com/sch/i.html?_nkw=Rolex+127235'],
       ['WatchCharts','https://watchcharts.com/watch_model/17896-rolex-land-dweller-127235/overview']
+    ]
+  },
+  {
+    name:'GMT-Master II White Gold Sprite (Ref. 126729VTNR)',
+    type:'已核對型號與圖片',
+    retail:366000,
+    hk:606083,
+    quotes:{chrono24:600872, ebay:500136, watchcharts:606083},
+    img:'https://img.chrono24.com/images/uhren/pt8nl5vkrk0i-qc486arwjqy7dvxbxqrt60n6-Square280.jpg',
+    notes:'圖片核對：Chrono24 alt 含 126729VTNR。',
+    links:[
+      ['Chrono24','https://www.chrono24.hk/rolex/ref-126729vtnr.htm'],
+      ['eBay','https://www.ebay.com/sch/i.html?_nkw=Rolex+126729VTNR'],
+      ['WatchCharts','https://watchcharts.ca/watch_model/54384-rolex-126729vtnr/overview']
+    ]
+  },
+  {
+    name:'Perpetual 1908 (Ref. 52508)',
+    type:'已核對型號與圖片',
+    retail:286000,
+    hk:857950,
+    quotes:{chrono24:857950, ebay:385000, watchcharts:343200},
+    img:'https://img.chrono24.com/images/uhren/42350434-wjcx219beaf0ogd82wasdky4-Square280.jpg',
+    notes:'圖片核對：Chrono24 alt 含 52508。',
+    links:[
+      ['Chrono24','https://www.chrono24.hk/rolex/ref-52508.htm'],
+      ['eBay','https://www.ebay.com/sch/i.html?_nkw=Rolex+52508'],
+      ['WatchCharts','https://watchcharts.ca/watch_model/46508-rolex-52508/overview']
+    ]
+  },
+  {
+    name:'Datejust 31 (Ref. 278274)',
+    type:'已核對型號與圖片',
+    retail:88400,
+    hk:161850,
+    quotes:{chrono24:159467, ebay:161850, watchcharts:148473},
+    source3:'EveryWatch',
+    img:'https://img.chrono24.com/images/uhren/44802649-94mnxvj1ae3hjy3fbwn9a9p8-Square280.jpg',
+    notes:'圖片核對：Chrono24 alt 含 Datejust 31 / 278274；第三站以 EveryWatch Datejust 市場成交截面作參考。',
+    links:[
+      ['Chrono24','https://www.chrono24.hk/rolex/ref-278274.htm'],
+      ['eBay','https://www.ebay.com/sch/i.html?_nkw=Rolex+278274'],
+      ['EveryWatch','https://everywatch.com/rolex/datejust/278274']
+    ]
+  },
+  {
+    name:'Oyster Perpetual 41 (Ref. 134300)',
+    type:'已核對型號與圖片',
+    retail:53200,
+    hk:175812,
+    quotes:{chrono24:175812, ebay:128505, watchcharts:79591},
+    img:'https://img.chrono24.com/images/uhren/43364740-v735r35roqahcyhwg1wis1a9-Square280.jpg',
+    notes:'圖片核對：Chrono24 alt 含 Oyster Perpetual 41 / 134300。',
+    links:[
+      ['Chrono24','https://www.chrono24.hk/rolex/ref-134300.htm'],
+      ['eBay','https://www.ebay.com/sch/i.html?_nkw=Rolex+134300'],
+      ['WatchCharts','https://watchcharts.com/watches/brand/rolex/oyster-perpetual']
     ]
   }
 ];
@@ -103,10 +160,11 @@ data.forEach(w => {
   const trend = diff >= 0 ? '升值' : '跌值';
   const maxQuote = Math.max(w.quotes.chrono24, w.quotes.ebay, w.quotes.watchcharts);
 
+  const source3 = w.source3 || 'WatchCharts';
   const quoteRows = [
     ['Chrono24', w.quotes.chrono24],
     ['eBay', w.quotes.ebay],
-    ['WatchCharts', w.quotes.watchcharts],
+    [source3, w.quotes.watchcharts],
   ].map(([name,price]) => `
       <div class="quote-row ${price===maxQuote?'max':''}">
         <span>${name}</span>
@@ -134,7 +192,7 @@ data.forEach(w => {
     <td>${w.name}</td>
     <td>${fmt(w.retail)}</td>
     <td>${fmt(w.hk)}</td>
-    <td>Chrono24 ${fmt(w.quotes.chrono24)}<br>eBay ${fmt(w.quotes.ebay)}<br>WatchCharts ${fmt(w.quotes.watchcharts)}</td>
+    <td>Chrono24 ${fmt(w.quotes.chrono24)}<br>eBay ${fmt(w.quotes.ebay)}<br>${source3} ${fmt(w.quotes.watchcharts)}</td>
     <td>${diff>=0?'+':''}${fmt(diff)}</td>
     <td class="${diff>=0?'up':'down'}">${trend} (${pct>=0?'+':''}${pct.toFixed(1)}%)</td>`;
   rows.appendChild(tr);
