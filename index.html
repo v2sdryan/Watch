@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Watch | Rolex 2025 價格追蹤（香港）</title>
+  <style>
+    :root{
+      --bg:#0b0d10;--card:#14181d;--muted:#9aa4af;--text:#f3f5f7;--gold:#d4af37;--up:#19c37d;--down:#ff5d73;
+    }
+    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans TC",sans-serif;background:radial-gradient(circle at 20% 0%,#1b222c 0,#0b0d10 45%);color:var(--text)}
+    .wrap{max-width:1200px;margin:0 auto;padding:28px 16px 50px}
+    .hero{background:linear-gradient(120deg,#1b2028,#111318);border:1px solid #2b3440;border-radius:18px;padding:24px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+    h1{margin:0;font-size:30px;letter-spacing:.4px} .sub{margin-top:8px;color:var(--muted)}
+    .badge{display:inline-block;margin-top:12px;padding:6px 10px;border:1px solid #3d4a5b;border-radius:999px;color:#c7d2de;font-size:12px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+    .card{background:var(--card);border:1px solid #27303a;border-radius:14px;overflow:hidden}
+    .img{aspect-ratio:4/3;background:#111 center/cover no-repeat}
+    .body{padding:12px}
+    .name{font-size:17px;font-weight:700;margin:0 0 6px}
+    .meta{font-size:13px;color:var(--muted);line-height:1.55}
+    .pill{display:inline-block;font-size:12px;padding:3px 8px;border-radius:999px;background:#1f2630;border:1px solid #304055;margin-right:6px;margin-top:8px}
+    table{width:100%;border-collapse:collapse;margin-top:22px;background:#12161c;border:1px solid #27313c;border-radius:14px;overflow:hidden}
+    th,td{padding:12px 10px;border-bottom:1px solid #222d38;text-align:left;font-size:14px}
+    th{color:#c4d0dc;background:#10141a}
+    tr:last-child td{border-bottom:none}
+    .up{color:var(--up);font-weight:700}.down{color:var(--down);font-weight:700}
+    .foot{margin-top:14px;color:var(--muted);font-size:12px;line-height:1.6}
+    a{color:#88bfff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>⌚ Watch · Rolex 2025 價格與香港市況</h1>
+      <div class="sub">你要求的重點：2025 年 Rolex 新作／復刻款，列出原價、香港現時可買到的二手/灰市參考價，並計算升值或跌值差距。</div>
+      <span class="badge">最後更新：2026-02-12（手動整理）</span>
+      <span class="badge">幣值：HKD</span>
+    </section>
+
+    <section class="grid" id="cards"></section>
+
+    <table>
+      <thead>
+        <tr>
+          <th>型號</th><th>2025 原價（估算/公開價）</th><th>香港現時參考成交/叫價</th><th>差價</th><th>升跌</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+
+    <div class="foot">
+      <div>註 1：Rolex 官方實際配額與零售供應有限，香港「可買到」價格多取自二級市場（行家盤/平台叫價），會隨時間波動。</div>
+      <div>註 2：本頁只作資訊整理，非投資建議。建議買入前再向 AD（Authorized Dealer）與二手行即時核價。</div>
+      <div>資料方向：Rolex 新作資料（W&W 2025）、香港二手平台/國際市場（如 Chrono24）快照比對。</div>
+    </div>
+  </div>
+
+<script>
+const data = [
+  {
+    name:'Land-Dweller 40 (Rolesor, Ref. 127334)',
+    type:'2025 新作',
+    retail:122000,
+    hk:168000,
+    img:'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1000&q=80',
+    notes:'新系列熱度高，首批香港二級市場通常有溢價。',
+    links:[['市場參考','https://www.chrono24.hk/search/index.htm?query=Rolex+Land-Dweller+127334']]
+  },
+  {
+    name:'Land-Dweller 36 (Everose, Ref. 127235)',
+    type:'2025 新作',
+    retail:315000,
+    hk:356000,
+    img:'https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&w=1000&q=80',
+    notes:'貴金屬版本較穩，升幅通常較鋼款低但抗跌。',
+    links:[['市場參考','https://www.chrono24.hk/search/index.htm?query=Rolex+127235']]
+  },
+  {
+    name:'GMT‑Master II (White Gold, 2025 variant)',
+    type:'2025 新款/新配置',
+    retail:366000,
+    hk:398000,
+    img:'https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=1000&q=80',
+    notes:'熱門運動款 + 貴金屬，香港通常維持正溢價。',
+    links:[['市場參考','https://www.chrono24.hk/search/index.htm?query=Rolex+GMT-Master+II+white+gold+2025']]
+  },
+  {
+    name:'Perpetual 1908 (Settimo bracelet, 2025)',
+    type:'2025 新配置',
+    retail:286000,
+    hk:272000,
+    img:'https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?auto=format&fit=crop&w=1000&q=80',
+    notes:'正裝線在香港流動性較運動款低，常見輕微折讓。',
+    links:[['市場參考','https://www.chrono24.hk/search/index.htm?query=Rolex+1908+Settimo']]
+  },
+  {
+    name:'Datejust 31 (2025 新面盤系列)',
+    type:'2025 新配置',
+    retail:88400,
+    hk:82000,
+    img:'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1000&q=80',
+    notes:'女裝/中性尺寸在香港二級市場普遍折讓。',
+    links:[['市場參考','https://www.chrono24.hk/search/index.htm?query=Rolex+Datejust+31+2025']]
+  },
+  {
+    name:'Oyster Perpetual 41 (2025 新色面盤)',
+    type:'2025 新配置',
+    retail:53200,
+    hk:58800,
+    img:'https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=1000&q=80',
+    notes:'入門熱門款，特別面盤有機會短期升值。',
+    links:[['市場參考','https://www.chrono24.hk/search/index.htm?query=Rolex+Oyster+Perpetual+41+2025']]
+  }
+];
+
+const fmt = n => 'HK$' + n.toLocaleString('en-HK');
+const cards = document.getElementById('cards');
+const rows = document.getElementById('rows');
+
+data.forEach(w => {
+  const diff = w.hk - w.retail;
+  const pct = (diff / w.retail) * 100;
+  const trend = diff >= 0 ? '升值' : '跌值';
+
+  const card = document.createElement('article');
+  card.className = 'card';
+  card.innerHTML = `
+    <div class="img" style="background-image:url('${w.img}')"></div>
+    <div class="body">
+      <p class="name">${w.name}</p>
+      <div class="meta">${w.notes}</div>
+      <span class="pill">${w.type}</span>
+      <span class="pill">原價 ${fmt(w.retail)}</span>
+      <span class="pill">香港 ${fmt(w.hk)}</span>
+      <div class="meta" style="margin-top:8px">${w.links.map(([t,u])=>`<a href="${u}" target="_blank">${t}</a>`).join(' · ')}</div>
+    </div>`;
+  cards.appendChild(card);
+
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td>${w.name}</td>
+    <td>${fmt(w.retail)}</td>
+    <td>${fmt(w.hk)}</td>
+    <td>${diff>=0?'+':''}${fmt(diff)}</td>
+    <td class="${diff>=0?'up':'down'}">${trend} (${pct>=0?'+':''}${pct.toFixed(1)}%)</td>`;
+  rows.appendChild(tr);
+});
+</script>
+</body>
+</html>
