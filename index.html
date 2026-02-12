@@ -25,6 +25,11 @@
     th{color:#c4d0dc;background:#10141a}
     tr:last-child td{border-bottom:none}
     .up{color:var(--up);font-weight:700}.down{color:var(--down);font-weight:700}
+    .quotebox{margin-top:10px;border:1px solid #2b3947;border-radius:10px;overflow:hidden}
+    .quote-row{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;font-size:12px;background:#111720;border-bottom:1px solid #22303d}
+    .quote-row:last-child{border-bottom:none}
+    .quote-row b{font-weight:700}
+    .quote-row.max{background:#1d2a1f;color:#d9ffe7}
     .foot{margin-top:14px;color:var(--muted);font-size:12px;line-height:1.6}
     a{color:#88bfff}
   </style>
@@ -43,7 +48,7 @@
     <table>
       <thead>
         <tr>
-          <th>型號</th><th>2025 原價（估算/公開價）</th><th>香港現時參考成交/叫價</th><th>差價</th><th>升跌</th>
+          <th>型號</th><th>2025 原價（估算/公開價）</th><th>3站最高參考價</th><th>3站報價</th><th>差價</th><th>升跌</th>
         </tr>
       </thead>
       <tbody id="rows"></tbody>
@@ -63,8 +68,9 @@ const data = [
     type:'已核對型號與圖片',
     retail:122000,
     hk:692640,
+    quotes:{chrono24:400421, ebay:692640, watchcharts:241669},
     img:'https://img.chrono24.com/images/uhren/43831646-ubafide44q9lbgmsiahn5xno-Square280.jpg',
-    notes:'圖片核對：Chrono24 圖片 alt 為「Rolex 勞力士 Land-Dweller 40 ... 127334」。二手價取 3 站最高：Chrono24 HK$400,421 / eBay 約 HK$692,640（US$88,800×7.8）/ WatchCharts 約 HK$241,669（C$41,667×5.8）。',
+    notes:'圖片核對：Chrono24 圖片 alt 為「Rolex 勞力士 Land-Dweller 40 ... 127334」。',
     links:[
       ['Chrono24','https://www.chrono24.hk/rolex/ref-127334.htm'],
       ['eBay','https://www.ebay.com/sch/i.html?_nkw=Rolex+127334'],
@@ -76,8 +82,9 @@ const data = [
     type:'已核對型號與圖片',
     retail:315000,
     hk:692640,
+    quotes:{chrono24:670573, ebay:692640, watchcharts:391117},
     img:'https://img.chrono24.com/images/uhren/43288626-gp9r8gh4nohfg6t8ss426bf1-Square280.jpg',
-    notes:'圖片核對：Chrono24 圖片 alt 含「Rolex 勞力士 Land-Dweller ... 127235」。二手價取 3 站最高：Chrono24 HK$670,573 / eBay 約 HK$692,640（US$88,800×7.8）/ WatchCharts 約 HK$391,117（C$67,434×5.8）。',
+    notes:'圖片核對：Chrono24 圖片 alt 含「Rolex 勞力士 Land-Dweller ... 127235」。',
     links:[
       ['Chrono24','https://www.chrono24.hk/rolex/ref-127235.htm'],
       ['eBay','https://www.ebay.com/sch/i.html?_nkw=Rolex+127235'],
@@ -94,6 +101,18 @@ data.forEach(w => {
   const diff = w.hk - w.retail;
   const pct = (diff / w.retail) * 100;
   const trend = diff >= 0 ? '升值' : '跌值';
+  const maxQuote = Math.max(w.quotes.chrono24, w.quotes.ebay, w.quotes.watchcharts);
+
+  const quoteRows = [
+    ['Chrono24', w.quotes.chrono24],
+    ['eBay', w.quotes.ebay],
+    ['WatchCharts', w.quotes.watchcharts],
+  ].map(([name,price]) => `
+      <div class="quote-row ${price===maxQuote?'max':''}">
+        <span>${name}</span>
+        <b>${fmt(price)}</b>
+      </div>
+  `).join('');
 
   const card = document.createElement('article');
   card.className = 'card';
@@ -104,7 +123,8 @@ data.forEach(w => {
       <div class="meta">${w.notes}</div>
       <span class="pill">${w.type}</span>
       <span class="pill">原價 ${fmt(w.retail)}</span>
-      <span class="pill">香港 ${fmt(w.hk)}</span>
+      <span class="pill">3站最高 ${fmt(w.hk)}</span>
+      <div class="quotebox">${quoteRows}</div>
       <div class="meta" style="margin-top:8px">${w.links.map(([t,u])=>`<a href="${u}" target="_blank">${t}</a>`).join(' · ')}</div>
     </div>`;
   cards.appendChild(card);
@@ -114,6 +134,7 @@ data.forEach(w => {
     <td>${w.name}</td>
     <td>${fmt(w.retail)}</td>
     <td>${fmt(w.hk)}</td>
+    <td>Chrono24 ${fmt(w.quotes.chrono24)}<br>eBay ${fmt(w.quotes.ebay)}<br>WatchCharts ${fmt(w.quotes.watchcharts)}</td>
     <td>${diff>=0?'+':''}${fmt(diff)}</td>
     <td class="${diff>=0?'up':'down'}">${trend} (${pct>=0?'+':''}${pct.toFixed(1)}%)</td>`;
   rows.appendChild(tr);
